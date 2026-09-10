@@ -1,6 +1,6 @@
 import { PixelEdge } from "../components/PixelDecorations.jsx";
 
-export default function Hero() {
+export default function Hero({ t }) {
   return (
     <section id="inicio" className="hero" aria-labelledby="hero-title">
       <div className="hero-grid parallax-layer" aria-hidden="true" />
@@ -61,6 +61,7 @@ export default function Hero() {
           UM PASSO DE CADA VEZ
         </div>
       </div>
+      <a className="pixel-control hero-contact" href="#contato">{t.contactButton}</a>
       <PixelEdge name="hero" />
     </section>
   );

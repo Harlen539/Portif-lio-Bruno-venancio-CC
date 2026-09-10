@@ -139,12 +139,15 @@ export default function PixelSwap({ pixelSize = 112, duration = 1500 }) {
         event.preventDefault();
         const stageTop = stage.getBoundingClientRect().top + scrollY;
         animation = { start: performance.now(), from: 0, to: 1 };
+        section.style.translate = `0 ${-Math.max(0, end - trigger)}px`;
         scrollTo({ top: stageTop + trigger, behavior: 'instant' });
         requestPaint();
       } else if (progress === 1 && delta < 0 && traveled > 0 && traveled <= end + 1) {
         event.preventDefault();
         const stageTop = stage.getBoundingClientRect().top + scrollY;
         animation = { start: performance.now(), from: 1, to: 0 };
+        // Compensate in the same task as the scroll, before the next frame.
+        section.style.translate = '0 -24px';
         scrollTo({ top: stageTop + end - 24, behavior: 'instant' });
         requestPaint();
       }

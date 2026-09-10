@@ -1,4 +1,3 @@
-import { PixelShutter } from "../components/PixelDecorations.jsx";
 import "./knowledge.css";
 
 const technologies = [
@@ -17,7 +16,6 @@ const technologies = [
 export default function Knowledge() {
   return (
     <section className="knowledge section-shell motion-section" id="conhecimentos" aria-labelledby="knowledge-title">
-      <PixelShutter offset={2} />
       <div className="section-surface">
         <div className="section-heading reveal">
           <div>

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { PixelEdge, PixelShutter } from "../components/PixelDecorations.jsx";
+import { PixelEdge } from "../components/PixelDecorations.jsx";
 import ProjectDialog from "../components/ProjectDialog.jsx";
 import ContactIcon from "../components/ContactIcon.jsx";
 import { safeUrl } from "../utils/safeUrl.js";
@@ -26,7 +26,6 @@ export default function Projects({ projects }) {
         id="projetos"
         aria-labelledby="projects-title"
       >
-        <PixelShutter offset={1} />
         <PixelEdge name="projects" className="pixel-edge-top" />
         <div className="section-surface">
           <div className="section-shell">

@@ -24,16 +24,3 @@ export function PixelEdge({ name, className = "" }) {
     </div>
   );
 }
-
-export function PixelShutter({ offset = 0 }) {
-  return (
-    <div className="pixel-shutter" aria-hidden="true">
-      {Array.from({ length: 20 }, (_, column) => (
-        <i
-          key={column}
-          style={{ "--step": String((column * 7 + offset * 3) % 5) }}
-        />
-      ))}
-    </div>
-  );
-}

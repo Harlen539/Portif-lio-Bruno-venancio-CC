@@ -9,10 +9,10 @@ export function useScrollMotion() {
     const sections = [
       ...document.querySelectorAll("main section.motion-section"),
     ];
-    const panels = sections.map((section) => ({
+    // The intro has its own pinned transition; lifting its content causes a jump.
+    const panels = sections.filter((section) => !section.closest(".intro-transition")).map((section) => ({
       section,
       surface: section.querySelector(":scope > .section-surface"),
-      shutter: section.querySelector(":scope > .pixel-shutter"),
       top: 0,
       last: "",
     }));
@@ -25,7 +25,6 @@ export function useScrollMotion() {
       [".star-two", -0.07, 25],
       [".workstation", 0.055, 25],
       [".project-image img", 0.035, 14],
-      [".terminal", -0.025, 14],
       [".contact-frames", -0.05, 24],
       [".contact-star", 0.09, 28],
     ];
@@ -81,7 +80,6 @@ export function useScrollMotion() {
       document.documentElement.classList.remove("scroll-motion");
       panels.forEach((panel) => {
         panel.surface?.style.removeProperty("--panel-lift");
-        panel.shutter?.style.removeProperty("--shutter-progress");
         panel.last = "";
       });
       layers.forEach((layer) => {
@@ -100,7 +98,7 @@ export function useScrollMotion() {
       const scrollY = window.scrollY;
       const focus = document.activeElement;
       panels.forEach((panel) => {
-        if (!panel.surface || !panel.shutter) return;
+        if (!panel.surface) return;
         const top = panel.top - scrollY;
         const raw = clamp((viewport * 0.98 - top) / (viewport * 0.58));
         const progress = panel.surface.contains(focus) ? 1 : easeOut(raw);
@@ -111,7 +109,6 @@ export function useScrollMotion() {
           "--panel-lift",
           `${((1 - progress) * (mobile ? 32 : 64)).toFixed(2)}px`,
         );
-        panel.shutter.style.setProperty("--shutter-progress", key);
       });
       layers.forEach((layer) => {
         // Sticky sections do not move with document scroll. Use their local

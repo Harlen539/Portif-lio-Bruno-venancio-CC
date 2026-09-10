@@ -162,24 +162,6 @@ h2 {
   height: 8px;
   background: var(--red);
 }
-.brand-logo {
-  width: 52px;
-  height: 42px;
-  overflow: hidden;
-  position: relative;
-  display: block;
-  flex-shrink: 0;
-  isolation: isolate;
-}
-.brand-logo img {
-  width: 100%;
-  max-width: none;
-  height: auto;
-  position: absolute;
-  top: -19px;
-  filter: grayscale(1);
-  mix-blend-mode: screen;
-}
 .hero {
   min-height: 830px;
   position: relative;
@@ -262,10 +244,6 @@ h2 {
   margin-bottom: 18px;
   letter-spacing: 0.13em;
 }
-.hero-description {
-  font-size: 15px;
-  margin: 25px 0 29px;
-}
 .button {
   display: inline-flex;
   min-height: 56px;
@@ -291,13 +269,6 @@ h2 {
 .button:active {
   transform: translate(5px, 5px);
   box-shadow: none;
-}
-.button-white {
-  color: var(--black);
-  background: var(--paper);
-}
-.button-white:hover {
-  background: white;
 }
 .button-red {
   color: var(--paper);
@@ -453,22 +424,6 @@ h2 {
   bottom: 22%;
   width: 13px;
   height: 13px;
-}
-.hero-bottom {
-  position: absolute;
-  bottom: 77px;
-  left: var(--gutter);
-  right: var(--gutter);
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  letter-spacing: 0.05em;
-  opacity: 0.8;
-}
-.hero-bottom span span {
-  display: inline-block;
-  margin-left: 12px;
-  font-size: 16px;
 }
 .pixel-edge {
   position: absolute;
@@ -805,110 +760,6 @@ h2 {
 .knowledge .section-heading > p {
   color: var(--muted);
 }
-.knowledge-layout {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 25px;
-}
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-.skill {
-  position: relative;
-  min-height: 199px;
-  padding: 28px 8px 21px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 25px;
-  border: 1px solid #f3f1e94a;
-  color: var(--paper);
-  background: transparent;
-  transition:
-    background 0.2s,
-    border 0.2s,
-    transform 0.2s;
-}
-.skill:before,
-.skill:after {
-  content: "";
-  width: 4px;
-  height: 4px;
-  position: absolute;
-  top: -2px;
-  border: 1px solid var(--paper);
-  background: var(--black);
-}
-.skill:before {
-  left: -2px;
-}
-.skill:after {
-  right: -2px;
-}
-.skill.active {
-  border-color: var(--red);
-  background: #ed292f0a;
-}
-.skill.active .skill-icon {
-  color: var(--red);
-}
-.skill:hover {
-  border-color: var(--red);
-  transform: translateY(-4px);
-}
-.skill-icon {
-  width: 52px;
-  height: 52px;
-  color: var(--paper);
-  transition: color 0.2s;
-}
-.skill > span {
-  font-family: var(--pixel);
-  font-size: 17px;
-  line-height: 1.2;
-  text-align: center;
-}
-.skill small {
-  position: absolute;
-  right: 8px;
-  top: 7px;
-  font-size: 10px;
-  color: var(--muted);
-}
-.terminal {
-  border: 1px solid #f3f1e94a;
-  min-width: 0;
-}
-.terminal .window-bar {
-  font-size: 14px;
-  padding: 9px 13px;
-  min-height: 35px;
-}
-.terminal-content {
-  padding: 19px 21px;
-}
-.terminal-command {
-  color: var(--red);
-  font-size: 13px;
-  margin-bottom: 12px;
-}
-.terminal-content #skill-description {
-  font-size: 13px;
-  line-height: 1.9;
-  min-height: 50px;
-  color: #d5d3cc;
-}
-.terminal-prompt {
-  margin-top: 15px;
-  color: var(--muted);
-  font-size: 11px;
-}
-.terminal-prompt .blink-caret {
-  color: var(--red);
-}
 .contact {
   background: var(--red);
   padding: 114px 24px 123px;
@@ -960,22 +811,6 @@ h2 {
   height: 25px;
   animation: twinkle 4s infinite;
 }
-.contact-soon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-height: 55px;
-  border: 1px solid #ffffffa6;
-  padding: 13px 20px;
-  font-family: var(--pixel);
-  font-size: 17px;
-  line-height: 1.4;
-}
-.contact-soon .pixel-icon {
-  width: 20px;
-  height: 20px;
-}
 #contact-actions {
   display: flex;
   gap: 0;
@@ -1007,15 +842,6 @@ h2 {
 .contact-social[aria-disabled="true"] {
   cursor: default;
 }
-.contact-link {
-  border: 1px solid var(--paper);
-  padding: 11px 16px;
-  font-size: 14px;
-}
-.contact-link:hover {
-  background: var(--paper);
-  color: var(--black);
-}
 .site-footer {
   padding-top: 35px;
   padding-bottom: 35px;
@@ -1028,27 +854,10 @@ h2 {
 .site-footer .brand {
   font-size: 15px;
 }
-.site-footer .brand-logo {
-  width: 42px;
-  height: 33px;
-}
-.site-footer .brand-logo img {
-  top: -15px;
-}
 .site-footer p {
   font-size: 10px;
   color: var(--muted);
   letter-spacing: 0.06em;
-}
-.back-top {
-  font-size: 11px;
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-.back-top span {
-  font-size: 20px;
-  color: var(--red);
 }
 dialog {
   position: fixed;
@@ -1209,22 +1018,6 @@ html.js-ready .reveal.is-visible {
   .tags span {
     font-size: 10px;
   }
-  .knowledge-layout {
-    grid-template-columns: 1.25fr 1fr;
-    gap: 17px;
-  }
-  .skill > span {
-    font-size: 15px;
-  }
-  .skill {
-    min-height: 193px;
-  }
-  .terminal-content {
-    padding: 16px;
-  }
-  .terminal-content #skill-description {
-    font-size: 12px;
-  }
 }
 @media (max-width: 900px) {
   .hero {
@@ -1239,9 +1032,6 @@ html.js-ready .reveal.is-visible {
   }
   .hero-center {
     margin-top: 12px;
-  }
-  .hero-description {
-    font-size: 13px;
   }
   .floating-window {
     width: 152px;
@@ -1342,28 +1132,6 @@ html.js-ready .reveal.is-visible {
   .database-label {
     font-size: 24px;
   }
-  .knowledge-layout {
-    grid-template-columns: 1fr;
-  }
-  .skills-grid {
-    gap: 18px;
-  }
-  .skill {
-    min-height: 180px;
-  }
-  .skill > span {
-    font-size: 19px;
-  }
-  .terminal-content #skill-description {
-    font-size: 14px;
-    min-height: 0;
-  }
-  .terminal-content {
-    padding: 22px;
-  }
-  .terminal-command {
-    font-size: 14px;
-  }
   .site-footer {
     flex-wrap: wrap;
   }
@@ -1398,12 +1166,6 @@ html.js-ready .reveal.is-visible {
     font-size: 10px;
     letter-spacing: 0.08em;
     margin-bottom: 19px;
-  }
-  .hero-description {
-    font-size: 12px;
-    max-width: 29ch;
-    margin: 21px auto 25px;
-    line-height: 1.9;
   }
   .button {
     font-size: 17px;
@@ -1458,17 +1220,6 @@ html.js-ready .reveal.is-visible {
   }
   .hero-frames i:nth-child(3) {
     inset: 30px -30px;
-  }
-  .hero-bottom {
-    bottom: 56px;
-    font-size: 8px;
-    justify-content: center;
-  }
-  .hero-bottom > span:last-child {
-    display: none;
-  }
-  .hero-bottom span span {
-    font-size: 13px;
   }
   .star-one {
     left: 7%;
@@ -1609,42 +1360,6 @@ html.js-ready .reveal.is-visible {
     padding-top: 64px;
     padding-bottom: 70px;
   }
-  .knowledge-layout {
-    gap: 19px;
-  }
-  .skills-grid {
-    gap: 10px;
-  }
-  .skill {
-    min-height: 150px;
-    padding: 25px 4px 18px;
-    gap: 24px;
-  }
-  .skill-icon {
-    width: 38px;
-    height: 38px;
-  }
-  .skill > span {
-    font-size: 13px;
-    min-height: 26px;
-    display: grid;
-    place-items: center;
-  }
-  .skill small {
-    font-size: 8px;
-  }
-  .terminal-content {
-    padding: 20px;
-  }
-  .terminal-command {
-    font-size: 12px;
-  }
-  .terminal-content #skill-description {
-    font-size: 13px;
-  }
-  .terminal-prompt {
-    font-size: 10px;
-  }
   .contact {
     padding: 93px 22px 98px;
   }
@@ -1659,16 +1374,6 @@ html.js-ready .reveal.is-visible {
     font-size: 12px;
     max-width: 28ch;
     margin: 23px auto 25px;
-  }
-  .contact-soon {
-    font-size: 13px;
-    padding: 11px 14px;
-    gap: 10px;
-    min-height: 49px;
-  }
-  .contact-soon .pixel-icon {
-    width: 18px;
-    height: 18px;
   }
   .contact-frames {
     inset: 53px 16% 56px;
@@ -1687,20 +1392,6 @@ html.js-ready .reveal.is-visible {
   .site-footer .brand {
     font-size: 12px;
     gap: 8px;
-  }
-  .site-footer .brand-logo {
-    width: 33px;
-    height: 28px;
-  }
-  .site-footer .brand-logo img {
-    top: -12px;
-  }
-  .back-top {
-    font-size: 9px;
-    gap: 8px;
-  }
-  .back-top span {
-    font-size: 18px;
   }
   .dialog-content {
     padding: 27px 23px;
@@ -1747,12 +1438,6 @@ html.js-ready .reveal.is-visible {
   .project-details h3 {
     font-size: 25px;
   }
-  .skill > span {
-    font-size: 11px;
-  }
-  .contact-soon {
-    font-size: 12px;
-  }
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
@@ -1767,20 +1452,11 @@ html.js-ready .reveal.is-visible {
 .project-details p {
   font-size: 13px;
 }
-.terminal-content #skill-description {
-  font-size: 14px;
-}
 .project-status {
   font-size: 12px;
 }
-.contact-soon {
-  letter-spacing: 0;
-}
 .projects-note {
   font-size: 12px;
-}
-.skill > span {
-  overflow-wrap: normal;
 }
 @media (max-width: 640px) {
   .project-details p {
@@ -1789,19 +1465,10 @@ html.js-ready .reveal.is-visible {
   .about-copy p:not(.eyebrow) {
     font-size: 15px;
   }
-  .hero-bottom {
-    font-size: 10px;
-  }
   .contact-content > p:not(.eyebrow) {
     font-size: 14px;
   }
   .section-heading > p {
-    font-size: 14px;
-  }
-  .skill > span {
-    font-size: 14px;
-  }
-  .contact-soon {
     font-size: 14px;
   }
   .tags span {
@@ -1824,8 +1491,7 @@ html.js-ready .reveal.is-visible {
     opacity: 1;
     transform: none;
   }
-  .project-card:hover,
-  .skill:hover {
+  .project-card:hover {
     transform: none;
   }
 }

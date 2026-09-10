@@ -1,5 +1,5 @@
 import ContactIcon from "../components/ContactIcon.jsx";
-import { PixelEdge, PixelShutter } from "../components/PixelDecorations.jsx";
+import { PixelEdge } from "../components/PixelDecorations.jsx";
 import { safeUrl } from "../utils/safeUrl.js";
 
 export default function Contact({ contact }) {
@@ -15,7 +15,6 @@ export default function Contact({ contact }) {
       id="contato"
       aria-labelledby="contact-title"
     >
-      <PixelShutter offset={3} />
       <PixelEdge name="contact" className="pixel-edge-top" />
       <div className="section-surface">
         <div className="contact-frames parallax-layer" aria-hidden="true" />

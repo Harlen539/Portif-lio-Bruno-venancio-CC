@@ -101,7 +101,7 @@ for (const width of [320, 390, 768, 1440]) {
     await expect(page.locator('#project-dialog')).toHaveCount(0);
     await expect(opener).toBeFocused();
     await expect(page.locator('body')).not.toHaveClass(/dialog-open/);
-    await page.locator('.back-top').click();
+    await page.locator('.header-brand').click();
     await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
     expect(errors).toEqual([]);
     expect(badResponses).toEqual([]);
@@ -129,4 +129,42 @@ test('a missing project fallback does not retry indefinitely', async ({ page }) 
   await expect(page.locator('.project-image img').first()).toHaveAttribute('data-fallback-applied', 'true');
   await page.waitForTimeout(250);
   expect(requests).toBeLessThanOrEqual(2);
+});
+
+test('mobile controls stay separated and contact navigation follows the selected language', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await home(page);
+  const menuButton = page.locator('.menu-toggle');
+  const languageButton = page.locator('.language-toggle');
+  const contact = page.locator('.hero-contact');
+  await expect(menuButton.locator('span')).toBeHidden();
+  await expect(page.locator('.header-contact')).toBeHidden();
+  await expect(contact).toBeVisible();
+  const menuBounds = await menuButton.boundingBox();
+  const languageBounds = await languageButton.boundingBox();
+  const contactBounds = await contact.boundingBox();
+  expect(menuBounds.x + menuBounds.width).toBeLessThan(195);
+  expect(languageBounds.x).toBeGreaterThan(195);
+  expect(Math.abs(contactBounds.x + contactBounds.width / 2 - 195)).toBeLessThan(1);
+  expect(contactBounds.y).toBeGreaterThan(744);
+  expect(contactBounds.y + contactBounds.height).toBeLessThanOrEqual(844);
+  await languageButton.click();
+  await page.locator('#language-options button').filter({ hasText: 'EN' }).click();
+  await expect(contact).toHaveText('TALK TO ME');
+  await page.reload();
+  await expect(page.locator('#sobre')).toHaveAttribute('data-swap-state', 'idle');
+  await expect(languageButton).toContainText('EN');
+  await contact.click();
+  await expect(page).toHaveURL(/#contato$/);
+  await expect(page.locator('#contact-title')).toBeInViewport();
+  let previousScroll = -1;
+  await expect.poll(async () => {
+    const currentScroll = await page.evaluate(() => scrollY);
+    const settled = currentScroll === previousScroll;
+    previousScroll = currentScroll;
+    return settled;
+  }).toBe(true);
+  await page.locator('.header-brand').click();
+  await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+  await expect(page.locator('.pixel-shutter')).toHaveCount(0);
 });

@@ -1,0 +1,97 @@
+.hero-contact {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    height: 76px;
+    padding: 16px 18px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-brand {
+    top: 38px;
+    width: 116px;
+  }
+
+  .header-actions {
+    flex-wrap: nowrap;
+    max-width: none;
+  }
+
+  .header-contact,
+  .menu-toggle > span {
+    display: none;
+  }
+
+  .menu-toggle {
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    gap: 0;
+  }
+
+  .menu-pixel-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .language-toggle {
+    min-width: 66px;
+    min-height: 44px;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .hero {
+    min-height: max(600px, 100svh);
+    padding: 88px 24px 250px;
+    display: grid;
+    place-items: center;
+  }
+
+  .hero-center {
+    width: 100%;
+    margin: 0;
+  }
+
+  .hero-logo {
+    width: min(100%, 380px);
+    margin: 0 auto;
+  }
+
+  .hero-frames {
+    inset: 108px 17% 220px;
+  }
+
+  .floating-window {
+    width: min(39vw, 160px);
+  }
+
+  .study-window {
+    top: auto;
+    bottom: 112px;
+    left: 7%;
+  }
+
+  .status-window {
+    top: auto;
+    bottom: 126px;
+    right: 7%;
+  }
+
+  .hero-contact {
+    display: inline-flex;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    translate: -50% 0;
+    z-index: 5;
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
