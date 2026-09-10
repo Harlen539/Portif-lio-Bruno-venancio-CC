@@ -1,0 +1,141 @@
+.menu-pixel-icon { width: 18px; height: 18px; flex-shrink: 0; }
+.menu-toggle { min-width: 124px; }
+.record-menu {
+  --scene: #171719; --halo: #74111d; --accent: #f02b3b;
+  position: fixed; inset: 0; z-index: 90; color: #f6f1e8; isolation: isolate; overflow: hidden;
+}
+.record-menu[hidden] { display: none; }
+.record-menu[data-active="inicio"] { --scene: #380b12; --halo: #ac1727; --accent: #fff5e9; }
+.record-menu[data-active="sobre"] { --scene: #242427; --halo: #4a4a50; --accent: #ff3c4c; }
+.record-menu[data-active="projetos"] { --scene: #8c1020; --halo: #310a11; --accent: #fff5e9; }
+.record-menu[data-active="conhecimentos"] { --scene: #0b0b0d; --halo: #343437; --accent: #f02b3b; }
+.record-panel { position: absolute; inset: 0; background: var(--scene); transition: background .45s ease; }
+.record-stage { position: absolute; inset: 94px 0 0; }
+.record-carriage { position: absolute; inset: 0; z-index: 2; }
+.record-halo {
+  position: absolute; z-index: 0; width: min(76vw, 1100px); height: 110%;
+  left: 50%; top: 16%; margin-left: max(-38vw, -550px);
+  background: var(--halo); transition: background .45s ease;
+  clip-path: polygon(0 40%,4% 40%,4% 28%,10% 28%,10% 18%,18% 18%,18% 10%,28% 10%,28% 4%,40% 4%,40% 0,60% 0,60% 4%,72% 4%,72% 10%,82% 10%,82% 18%,90% 18%,90% 28%,96% 28%,96% 40%,100% 40%,100% 100%,0 100%);
+}
+.record-caption, .record-footer {
+  position: absolute; z-index: 1; left: 4vw; right: 4vw; display: flex;
+  justify-content: space-between; font: 11px/1.5 var(--mono); letter-spacing: .12em;
+}
+.record-caption { top: 18px; }
+.record-footer { bottom: 18px; }
+.record-items { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.record-flight { position: absolute; top: 29%; width: 23%; pointer-events: auto; }
+.record-flight-0 { left: 3%; }
+.record-flight-1 { left: 26.5%; }
+.record-flight-2 { left: 50%; }
+.record-flight-3 { left: 73.5%; }
+.record-flight:has(.record-link:hover), .record-flight:has(.record-link:focus-visible) { z-index: 5; }
+.record-link {
+  display: block; position: relative; color: white; text-decoration: none;
+  transform: translateY(0) scale(1) rotate(0);
+  transition: transform .32s cubic-bezier(.2,.75,.3,1), filter .32s ease;
+}
+.record-link img {
+  display: block; width: 114%; max-width: none; margin-left: -7%; height: auto; aspect-ratio: 3 / 2; object-fit: contain;
+  image-rendering: pixelated; user-select: none; pointer-events: none;
+  clip-path: polygon(6% 11%,8% 11%,8% 10%,92% 10%,92% 11%,94% 11%,94% 87%,92% 87%,92% 89%,8% 89%,8% 87%,6% 87%);
+}
+@media (hover: hover) {
+  .record-menu[data-state="open"] .record-link:hover { transform: translateY(-22px) scale(1.06) rotate(var(--tilt)); }
+}
+.record-menu[data-state="open"] .record-link:focus-visible {
+  transform: translateY(-22px) scale(1.06) rotate(var(--tilt)); outline: 3px solid #fff; outline-offset: 4px;
+}
+.record-menu[data-state="closing"] .record-link { transform: none; }
+.record-box {
+  position: absolute; width: clamp(220px, 25vw, 360px); aspect-ratio: 320/220;
+  left: 50%; margin-left: clamp(-180px, -12.5vw, -110px); top: 64%; pointer-events: none;
+}
+.record-box svg { width: 100%; height: 100%; display: block; }
+.record-box-back { z-index: 2; }
+.record-box-front { z-index: 4; }
+.record-box-front span { position: absolute; left: 31%; top: 70%; color: #fff; font: clamp(10px, 1.1vw, 16px) var(--pixel); }
+.record-decorations { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.record-decoration { position: absolute; width: clamp(32px, 5.5vw, 84px); color: var(--accent); transition: color .45s ease; }
+.record-symbol { display: block; width: 100%; aspect-ratio: 1; filter: drop-shadow(4px 4px 0 #050505); animation: record-drift var(--loop) ease-in-out var(--offset) infinite alternate; }
+.record-glyph { display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+.record-glyph-mask { background: currentColor; mask-size: contain; mask-position: center; mask-repeat: no-repeat; }
+.record-glyph-color { filter: grayscale(1) contrast(8); }
+.site-footer { flex-wrap: wrap; }
+.site-footer .icon-credits { display: block; flex-basis: 100%; text-align: center; font-size: 10px; line-height: 1.8; }
+.icon-credits a { text-decoration: underline; text-underline-offset: 3px; }
+.icon-credits a:hover { color: var(--paper); }
+.decor-0 { left: 28%; top: 10%; }
+.decor-1 { left: 11%; top: 7%; color: #e9e5e0; }
+.decor-2 { right: 9%; top: 8%; }
+.decor-3 { right: 30%; top: 5%; }
+.decor-4 { right: 5%; top: 68%; }
+.decor-5 { left: 19%; top: 74%; }
+.decor-6 { right: 23%; top: 79%; color: #e9e5e0; }
+@keyframes record-drift {
+  from { transform: translate(-5px, -8px) rotate(-12deg); }
+  to { transform: translate(7px, 9px) rotate(14deg); }
+}
+.record-menu[hidden] .record-symbol { animation-play-state: paused; }
+.navigation-shell[data-menu-state="closed"] .record-stage { visibility: hidden; }
+@media (max-width: 900px) {
+  .record-flight { --record-width: min(38vw, calc((100dvh - 94px) * .34)); width: var(--record-width); margin-left: calc(var(--record-width) / -2); }
+  .record-flight-0 { left: 25%; top: 10%; }
+  .record-flight-1 { left: 75%; top: 10%; }
+  .record-flight-2 { left: 25%; top: 44%; }
+  .record-flight-3 { left: 75%; top: 44%; }
+  .record-box { top: 72%; width: 220px; margin-left: -110px; }
+  .record-halo { width: 94%; margin-left: -47%; }
+  .decor-0 { left: 1%; top: 35%; }
+  .decor-1 { left: 1%; top: 6%; }
+  .decor-2 { right: 1%; top: 4%; }
+  .decor-3 { right: 2%; top: 37%; }
+  .decor-5 { left: 10%; top: 77%; }
+  .decor-6 { right: 13%; top: 82%; }
+}
+@media (max-width: 640px) {
+  .site-header { height: 108px; align-items: start; padding-top: 16px; }
+  .header-brand { top: 35px; width: 96px; }
+  .header-actions { gap: 7px; flex-wrap: wrap; justify-content: flex-end; max-width: 122px; }
+  .header-contact { display: inline-flex; min-height: 27px; min-width: 100px; padding: 5px 6px; font-size: 10px; }
+  .menu-toggle { min-width: 96px; }
+  .menu-pixel-icon { width: 14px; height: 14px; }
+  .record-stage { inset-block-start: 110px; }
+  .record-caption { top: 0; font-size: 8px; letter-spacing: .06em; }
+  .record-caption span { display: none; }
+  .record-flight { width: 46%; margin-left: 0; }
+  .record-flight-0 { left: 3%; top: 13%; }
+  .record-flight-1 { left: 51%; top: 13%; }
+  .record-flight-2 { left: 3%; top: 39%; }
+  .record-flight-3 { left: 51%; top: 39%; }
+  .record-box { width: 190px; margin-left: -95px; top: 70%; }
+  .record-footer { font-size: 8px; bottom: 10px; }
+  .record-footer span { display: none; }
+  .record-box-front span { font-size: 10px; }
+  .record-decoration { width: 28px; }
+  .decor-0 { top: 34%; }
+  .decor-3 { top: 36%; }
+}
+@media (max-height: 650px) and (min-width: 641px) {
+  .record-flight { width: min(23vw, 34dvh); top: 22%; margin-left: 0; }
+  .record-flight-0 { left: 3%; }
+  .record-flight-1 { left: 26.5%; }
+  .record-flight-2 { left: 50%; }
+  .record-flight-3 { left: 73.5%; }
+  .record-box { width: min(190px, 32dvh); margin-left: max(-95px, -16dvh); top: 61%; }
+  .record-caption { top: 0; }
+}
+@media (max-height: 700px) and (max-width: 640px) {
+  .record-flight { width: 44%; }
+  .record-flight-0 { left: 4%; top: 10%; }
+  .record-flight-1 { left: 52%; top: 10%; }
+  .record-flight-2 { left: 4%; top: 40%; }
+  .record-flight-3 { left: 52%; top: 40%; }
+  .record-box { top: 68%; width: 160px; margin-left: -80px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .record-menu *, .record-symbol { animation: none !important; transition: none !important; }
+  .record-menu[data-state="open"] .record-link:hover,
+  .record-menu[data-state="open"] .record-link:focus-visible { transform: none; }
+}

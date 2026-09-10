@@ -1,0 +1,33 @@
+﻿.intro-transition {
+  position: relative;
+  isolation: isolate;
+  display: flow-root;
+}
+.pixel-transition-enabled > .hero {
+  position: sticky;
+  top: min(0px, calc(100svh - var(--hero-height)));
+  min-height: 100svh;
+  z-index: 0;
+}
+.pixel-transition-enabled > .about {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  will-change: translate;
+}
+.incoming-pixel-swap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  pointer-events: none;
+  shape-rendering: crispEdges;
+}
+html.scroll-motion.js-ready .pixel-transition-enabled > .about .reveal {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .incoming-pixel-swap { display: none; }
+}
