@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 async function home(page) {
   await page.goto('/');
+  await expect(page.locator('.preloader')).toHaveCount(0);
   await expect(page.locator('#sobre')).toHaveAttribute('data-swap-state', 'idle');
   await page.mouse.move(200, 600);
 }
@@ -152,6 +153,7 @@ test('mobile controls stay separated and contact navigation follows the selected
   await page.locator('#language-options button').filter({ hasText: 'EN' }).click();
   await expect(contact).toHaveText('TALK TO ME');
   await page.reload();
+  await expect(page.locator('.preloader')).toHaveCount(0);
   await expect(page.locator('#sobre')).toHaveAttribute('data-swap-state', 'idle');
   await expect(languageButton).toContainText('EN');
   await contact.click();

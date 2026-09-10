@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import Preloader from "./components/Preloader.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import SpriteDefinitions from "./components/SpriteDefinitions.jsx";
@@ -23,11 +24,21 @@ const getInitialLanguage = () => {
 };
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+  const finishLoading = useCallback(() => setLoading(false), []);
   const [language, setLanguage] = useState(getInitialLanguage);
   const activeSection = useActiveSection();
   const t = translations[language];
   useReveal();
   useScrollMotion();
+
+  useEffect(() => {
+    if (loading || !location.hash) return;
+    // Initial anchors can be skipped by the browser while the page is inert.
+    const target = document.getElementById(location.hash.slice(1));
+    target?.scrollIntoView({ behavior: "instant", block: "start" });
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+  }, [loading]);
 
   useEffect(() => {
     document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
@@ -40,6 +51,8 @@ export default function App() {
 
   return (
     <>
+      {loading && <Preloader onComplete={finishLoading} language={language} />}
+      <div className="portfolio-page" inert={loading}>
       <a className="skip-link" href="#conteudo">
         Pular para o conteúdo
       </a>
@@ -60,6 +73,7 @@ export default function App() {
       </main>
       <Footer />
       <SpriteDefinitions />
+      </div>
     </>
   );
 }

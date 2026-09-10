@@ -455,7 +455,6 @@ html.scroll-motion.js-ready .reveal.is-visible {
   transform: translate(-50%, -50%);
   overflow: visible;
   isolation: isolate;
-  animation: header-logo-glitch 0.62s steps(2, end) both;
 }
 .header-brand img {
   width: 100%;
@@ -565,26 +564,6 @@ html.scroll-motion.js-ready .reveal.is-visible {
 }
 .header-contact:hover {
   background: #ff3b49;
-}
-@keyframes header-logo-glitch {
-  0% {
-    opacity: 0;
-    transform: translate(-47%, -50%);
-    clip-path: inset(0 0 65%);
-  }
-  35% {
-    opacity: 1;
-    transform: translate(-53%, -50%);
-    clip-path: inset(35% 0 18%);
-  }
-  70% {
-    transform: translate(-49%, -50%);
-    clip-path: inset(12% 0 42%);
-  }
-  100% {
-    transform: translate(-50%, -50%);
-    clip-path: inset(0);
-  }
 }
 @media (max-width: 900px) {
   .site-header {
