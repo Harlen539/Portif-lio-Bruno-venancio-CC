@@ -34,7 +34,9 @@ export default function Contact({ contact }) {
             )}
             <a
               className="contact-social"
-              href={emailIsValid ? `mailto:${contact.email}?subject=${encodeURIComponent("Vamos criar algo juntos?")}` : undefined}
+              href={emailIsValid ? `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contact.email)}&su=${encodeURIComponent("Vamos criar algo juntos?")}` : undefined}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={emailIsValid ? "E-mail" : "E-mail em breve"}
               aria-disabled={!emailIsValid || undefined}
               title={emailIsValid ? "E-mail" : "E-mail em breve"}

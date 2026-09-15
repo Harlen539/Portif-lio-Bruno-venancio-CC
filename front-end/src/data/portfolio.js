@@ -1,6 +1,6 @@
 export const portfolio = {
   contact: {
-    email: "",
+    email: "brunovenancio2007@gmail.com",
     github: "https://github.com/brunovenanc10",
     whatsapp: "https://wa.me/5583999840070",
   },
